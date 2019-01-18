@@ -58,9 +58,14 @@ function install_basic_softwares {
 	apt-get install -y vim curl make git unzip supervisor
 }
 
+function install_redis {
+	apt-get install -y redis-server
+	service redis-server restart
+}
+
 call_function init_system 'init the system'
 call_function init_repositories 'init software source'
 call_function install_basic_softwares 'install basic softwares'
-
+call_function install_redis 'install redis'
 
 echo -n -e "\033[?25h"
