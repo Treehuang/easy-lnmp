@@ -20,13 +20,41 @@ if [[ $? -ne 0 ||  ${DISTRO} != 'Yes' || ${LONG_BIT} != 'x86_64' ]]; then
 	echo -n -e "\033[?25h"; exit
 fi
 
+# 检测是否为 root 用户
 if [[ $( id -u ) -ne 0 ]]; then
 	ansi --inverse --bold --blue 'Please execute the script'
 	echo -n -e "\033[?25h"; exit
 fi
 
 
+# 初始化系统，设置编码和时间
+function init_system {
+	export LC_ALL='en_US.UTF-8'
 
+	cat /etc/default/locale | grep LC_ALL=en_US.UTF-8 >& /dev/null
+	if [[ $? -ne 0 ]]; then
+		echo LC_ALL='en_US.UTF-8' >> /etc/default/locale
+	fi
+	
+	locale-gen en_US.UTF-8
+	locale-gen zh_CN.UTF-8
 
+	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+	sleep 1
+}
+
+# 初始化仓库
+function init_repositories {
+	rm /var/cache/apt/archives/lock
+	rm /var/lib/dpkg/lock
+
+	add-apt-repository -y ppa:nginx/stable
+	grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/ppa.launchpad.net/launchpad.proxy.ustclug.org/g'
+	
+	apt-get update
+}
+
+call_function init_system 'init the system'
+call_function init_repositories 'init software source'
 
 echo -n -e "\033[?25h"

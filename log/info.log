@@ -1,0 +1,25 @@
+gpg: keyring `/tmp/tmpw14sgx8n/secring.gpg' created
+gpg: keyring `/tmp/tmpw14sgx8n/pubring.gpg' created
+gpg: requesting key C300EE8C from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmpw14sgx8n/trustdb.gpg: trustdb created
+gpg: key C300EE8C: public key "Launchpad Stable" imported
+gpg: no ultimately trusted keys found
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+Hit:1 http://mirrors.aliyun.com/ubuntu xenial InRelease
+Hit:2 http://mirrors.aliyun.com/ubuntu xenial-updates InRelease
+Hit:3 http://mirrors.aliyun.com/ubuntu xenial-backports InRelease
+Hit:4 http://mirrors.aliyun.com/ubuntu xenial-security InRelease
+Hit:5 http://launchpad.proxy.ustclug.org/nginx/stable/ubuntu xenial InRelease
+Reading package lists...
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Packages (main/binary-i386/Packages) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Translations (main/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Packages (main/binary-i386/Packages) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Translations (main/i18n/Translation-en_US) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:1 and /etc/apt/sources.list.d/nginx-ubuntu-stable-xenial.list:2
