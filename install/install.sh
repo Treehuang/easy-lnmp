@@ -54,7 +54,13 @@ function init_repositories {
 	apt-get update
 }
 
+function install_basic_softwares {
+	apt-get install -y vim curl make git unzip supervisor
+}
+
 call_function init_system 'init the system'
 call_function init_repositories 'init software source'
+call_function install_basic_softwares 'install basic softwares'
+
 
 echo -n -e "\033[?25h"
