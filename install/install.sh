@@ -88,7 +88,7 @@ call_function install_nginx 'install nginx'
 call_function install_composer 'install composer'
 call_function install_mysql_start '[start install mysql5.7]'
 call_function upgrade_package 'upgrade packages'
-call_function download_mysql 'download mysql5.7'
+call_function download_mysql 'download mysql5.7, about 25min'
 call_function install_mysql 'install mysql 5.7'
 call_function start_mysql 'start mysql5.7'
 
