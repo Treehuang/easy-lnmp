@@ -69,15 +69,16 @@ function install_redis {
 	service redis-server restart
 }
 
-call_function init_system 'init the system'
-call_function init_repositories 'init software source'
-call_function install_basic_softwares 'install basic softwares'
-call_function install_redis 'install redis'
-call_function install_php '[install php7 startup]'
-call_function install_dependenices 'install dependecices'
-call_function download_php 'download php7'
-call_function configure_php 'configure php7'
-call_function make_install_php 'install php7, about 25 min'
-call_function start_up 'start php7'
+#call_function init_system 'init the system'
+#call_function init_repositories 'init software source'
+#call_function install_basic_softwares 'install basic softwares'
+#call_function install_redis 'install redis'
+#call_function install_php '[install php7 startup]'
+#call_function install_dependenices 'install dependecices'
+#call_function download_php 'download php7'
+#call_function configure_php 'configure php7'
+#call_function make_install_php 'install php7, about 25 min'
+#call_function start_up 'start php7'
+call_function install_nginx 'install nginx'
 
 echo -n -e "\033[?25h"
