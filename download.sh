@@ -25,7 +25,7 @@ sleep 1
 
 wget -q https://github.com/Treehuang/easy-lnmp/archive/master.tar.gz -O easy-lnmp.tar.gz
 rm -f easy-lnmp
-tar -xf easy-lnmp.tar.gz > /dec/null 2>&1
+tar -xf easy-lnmp.tar.gz > /dev/null 2>&1
 mv easy-lnmp-master easy-lnmp
 rm -rf easy-lnmp.tar.gz
 
