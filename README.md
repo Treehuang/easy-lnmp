@@ -1,5 +1,5 @@
 ## 简介
-适用于 Ubuntu14.04/16.04 的 LNMP 安装脚本
+适用于 Ubuntu14.04LTS/16.04LTS 的 LNMP 安装脚本
 
 请在 root 用户下执行该脚本，如果登录账户不是 root，则需要执行 `sudo su root` 切换为 root 账户后再下载安装
 
