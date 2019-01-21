@@ -49,12 +49,12 @@ function call_function {
 			
 			if [[ ${tmp} = 'succ' ]]; then
 				status=false
-				printf "\e[33m%-40s" "${info}"
+				printf "\e[33m%-38s" "${info}"
 				ansi --green "[DONE]  [OK]"
 				rm -rf ${COMMON_DIR}/tmp.txt
 			else
 				status=false
-				printf "\e[33m%-40s" "${info}"
+				printf "\e[33m%-38s" "${info}"
 				ansi --red "[DONE]  [FAIL]"
 				echo -n -e "\033[?25h"        # 显示光标
 				rm -rf ${COMMON_DIR}/tmp.txt
