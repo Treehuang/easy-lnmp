@@ -97,3 +97,4 @@ ansi -n --green 'Mysql root password：'; ansi --yellow ${MYSQL_PASSWORD}
 ansi --blue "Congratulations, the installation is complete!"
 
 echo -n -e "\033[?25h"
+exit
