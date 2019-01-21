@@ -20,12 +20,18 @@ if [[ $? -ne 0 ||  ${DISTRO} != 'Yes' || ${LONG_BIT} != 'x86_64' ]]; then
 	echo -n -e "\033[?25h"; exit
 fi
 
+
 # 检测是否为 root 用户
 if [[ $( id -u ) -ne 0 ]]; then
-	ansi --inverse --bold --blue 'Please execute the script'
+	ansi --inverse --bold --blue 'please execute the script with root'
 	echo -n -e "\033[?25h"; exit
 fi
 
+# 包含install文件夹的所有脚本，除开 install.sh
+for script_file in `ls -I 'install.sh' ./`
+do
+	source ${INSTALL_DIR}/${script_file}
+done
 
 # 初始化系统，设置编码和时间
 function init_system {
@@ -67,5 +73,11 @@ call_function init_system 'init the system'
 call_function init_repositories 'init software source'
 call_function install_basic_softwares 'install basic softwares'
 call_function install_redis 'install redis'
+call_function install_php '[install php7 startup]'
+call_function install_dependenices 'install dependecices'
+call_function download_php 'download php7'
+call_function configure_php 'configure php7'
+call_function make_install_php 'install php7, about 25 min'
+call_function start_up 'start php7'
 
 echo -n -e "\033[?25h"
