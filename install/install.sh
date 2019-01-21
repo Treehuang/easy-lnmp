@@ -69,6 +69,11 @@ function install_redis {
 	service redis-server restart
 }
 
+function install_composer {
+	wget https://dl.laravel-china.org/composer.phar -qO /bin/composer
+	chmod +x /bin/composer
+}
+
 #call_function init_system 'init the system'
 #call_function init_repositories 'init software source'
 #call_function install_basic_softwares 'install basic softwares'
@@ -80,5 +85,6 @@ function install_redis {
 #call_function make_install_php 'install php7, about 25 min'
 #call_function start_up 'start php7'
 call_function install_nginx 'install nginx'
+call_function install_composer 'install composer'
 
 echo -n -e "\033[?25h"
