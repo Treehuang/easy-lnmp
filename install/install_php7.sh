@@ -88,5 +88,6 @@ function start_up {
 
 	# 赋予php7.2-fpm.sock读写权限
 	chmod 666 /var/run/php7.2-fpm.sock
+	chmod 666 /usr/local/php7.2.5/var/log/php-fpm.log
 }
 
