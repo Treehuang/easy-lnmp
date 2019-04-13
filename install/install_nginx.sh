@@ -9,6 +9,10 @@ function install_nginx {
 	# 创建站点目录
 	rm -rf /var/www/html
 	rm -rf /var/www/80 /var/www/8080
+	
+	if [[ ! -d /var/www ]]; then
+	    mkdir /var/www
+	fi    
 
 	mkdir /var/www/80 /var/www/8080
 	touch /var/www/80/index.php /var/www/8080/index.php
