@@ -16,62 +16,68 @@ echo ${VERSION_ARRAY[@]} | grep -wq ${VERSION} && DISTRO='Yes' || DISTRO='No'
 
 lsb_release -d | grep 'Ubuntu' >& /dev/null
 if [[ $? -ne 0 ||  ${DISTRO} != 'Yes' || ${LONG_BIT} != 'x86_64' ]]; then
-	ansi --inverse --bold --blue 'Only ubuntu 14.04LTS/16.04LTS(x86_64) is supported!'
-	echo -n -e "\033[?25h"; exit
+    ansi --inverse --bold --blue 'Only ubuntu 14.04LTS/16.04LTS(x86_64) is supported!'
+    echo -n -e "\033[?25h"; exit
 fi
 
 
 # 检测是否为 root 用户
 if [[ $( id -u ) -ne 0 ]]; then
-	ansi --inverse --bold --blue 'please execute the script with root'
-	echo -n -e "\033[?25h"; exit
+    ansi --inverse --bold --blue 'please execute the script with root'
+    echo -n -e "\033[?25h"; exit
 fi
 
 # 包含install文件夹的所有脚本，除开 install.sh
 for script_file in `ls -I 'install.sh' ./`
 do
-	source ${INSTALL_DIR}/${script_file}
+    source ${INSTALL_DIR}/${script_file}
 done
 
 # 初始化系统，设置编码和时间
 function init_system {
-	export LC_ALL='en_US.UTF-8'
+    export LC_ALL='en_US.UTF-8'
 
-	cat /etc/default/locale | grep LC_ALL=en_US.UTF-8 >& /dev/null
-	if [[ $? -ne 0 ]]; then
-		echo LC_ALL='en_US.UTF-8' >> /etc/default/locale
-	fi
+    cat /etc/default/locale | grep LC_ALL=en_US.UTF-8 >& /dev/null
+    if [[ $? -ne 0 ]]; then
+        echo LC_ALL='en_US.UTF-8' >> /etc/default/locale
+    fi
 	
-	locale-gen en_US.UTF-8
-	locale-gen zh_CN.UTF-8
+    locale-gen en_US.UTF-8
+    locale-gen zh_CN.UTF-8
 
-	ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-	sleep 1
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+    sleep 1
 }
 
 # 初始化仓库
 function init_repositories {
-	rm /var/cache/apt/archives/lock
-	rm /var/lib/dpkg/lock
+    rm /var/cache/apt/archives/lock
+    rm /var/lib/dpkg/lock
 
-	add-apt-repository -y ppa:nginx/stable
-	grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/ppa.launchpad.net/launchpad.proxy.ustclug.org/g'
-	
-	apt-get update
+    # add-apt-repository -y ppa:nginx/stable
+    # grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/ppa.launchpad.net/launchpad.proxy.ustclug.org/g'
+    apt install curl gnupg2 ca-certificates lsb-release
+    echo "deb http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
+    | sudo tee /etc/apt/sources.list.d/nginx.list
+    
+    curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+    apt-key fingerprint ABF5BD827BD9BF62
+    
+    apt-get update
 }
 
 function install_basic_softwares {
-	apt-get install -y vim curl make git unzip supervisor
+    apt-get install -y vim curl make git unzip supervisor
 }
 
 function install_redis {
-	apt-get install -y redis-server
-	service redis-server restart
+    apt-get install -y redis-server
+    service redis-server restart
 }
 
 function install_composer {
-	wget https://dl.laravel-china.org/composer.phar -qO /bin/composer
-	chmod +x /bin/composer
+    wget https://dl.laravel-china.org/composer.phar -qO /bin/composer
+    chmod +x /bin/composer
 }
 
 call_function init_system 'init the system'
