@@ -26,7 +26,7 @@ function install_nginx {
     fi
 
     cat ${TPL_DIR}/nginx_site_conf.tpl > /etc/nginx/conf.d/8080.conf
-    cat ${TPL_DIR}/default_nginx_site_conf.tpl > /etc/nginx/sites-available/default
+    cat ${TPL_DIR}/default_nginx_site_conf.tpl > /etc/nginx/conf.d/default.conf
 	
     # 启动nginx
     service nginx stop
