@@ -51,8 +51,8 @@ function init_system {
 
 # 初始化仓库
 function init_repositories {
-    rm /var/cache/apt/archives/lock
-    rm /var/lib/dpkg/lock
+    rm /var/lib/dpkg/lock*
+    dpkg --configure -a
 
     # add-apt-repository -y ppa:nginx/stable
     # grep -rl ppa.launchpad.net /etc/apt/sources.list.d/ | xargs sed -i 's/ppa.launchpad.net/launchpad.proxy.ustclug.org/g'
